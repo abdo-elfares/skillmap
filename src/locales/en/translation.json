@@ -1,0 +1,60 @@
+{
+  "navbar": {
+    "contactUs": "Contact Us"
+  },
+  "hero": {
+    "title": "Discover Your Path to Success",
+    "subtitle": "Map your skills, find your opportunities, and build your future",
+    "getStarted": "Get Started",
+    "joinWaitlist": "Join Waitlist",
+    "exploreMore": "Explore More",
+    "comingSoon": "Coming Soon",
+    "developmentText": "We're working hard to bring you an amazing platform. Join our waitlist to be the first to know when we launch!"
+  },
+  "features": {
+    "title": "What We Offer in",
+    "subtitle": "A comprehensive platform that helps you discover your career path and develop your skills in an organized and thoughtful way",
+    "cards": [
+      {
+        "title": "Learning Path Maps",
+        "description": "Detailed roadmaps for every professional field with free and paid educational resources"
+      },
+      {
+        "title": "Career Assessment Test",
+        "description": "Personality analysis test that helps you discover the most suitable professional field for your skills and interests"
+      },
+      {
+        "title": "Learning Community",
+        "description": "Connect with other learners in the same field and share experiences and tips"
+      },
+      {
+        "title": "Specialized Courses",
+        "description": "Specialized training courses provided by experts in various professional fields"
+      },
+      {
+        "title": "Professional Consultations",
+        "description": "Consultation sessions with experts to help you make appropriate professional decisions"
+      },
+      {
+        "title": "Job Opportunities",
+        "description": "Connect with hiring companies and job opportunities suitable for your skills after completing the learning path"
+      }
+    ]
+  },
+  "waitlist": {
+    "title": "Join Our Waitlist",
+    "subtitle": "Be among the first users of the platform and get early access and exclusive benefits",
+    "buttonText": "Subscribe",
+    "placeholder": "Enter your email",
+    "sending": "Sending...",
+    "successMessage": "Successfully sent!",
+    "secure": "Secure and Protected",
+    "noSpam": "No spam"
+  },
+  "footer": {
+    "copyright": "© 2023 SkillMap. All rights reserved.",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us on Instagram",
+    "language": "Language"
+  }
+}

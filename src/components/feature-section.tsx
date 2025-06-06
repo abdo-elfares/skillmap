@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardBody } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface FeatureCardProps {
   icon: string;
@@ -24,8 +26,8 @@ const FeatureCard = ({ icon, title, description, delay }: FeatureCardProps) => {
           <div className="rounded-full bg-primary-100 p-3 w-12 h-12 flex items-center justify-center">
             <Icon icon={icon} className="text-primary text-xl" />
           </div>
-          <h3 className="text-xl font-semibold arabic-text">{title}</h3>
-          <p className="text-foreground-600 arabic-text">{description}</p>
+          <h3 className="text-xl font-semibold">{title}</h3>
+          <p className="text-foreground-600">{description}</p>
         </CardBody>
       </Card>
     </motion.div>
@@ -33,36 +35,43 @@ const FeatureCard = ({ icon, title, description, delay }: FeatureCardProps) => {
 };
 
 export const FeatureSection = () => {
+  const { t, ready } = useTranslation();
+  const { isRTL } = useLanguage();
+
+  if (!ready) {
+    return <div>Loading...</div>;
+  }
+
   const features = [
     {
       icon: "lucide:compass",
-      title: "خرائط مسارات تعليمية",
-      description: "خرائط طريق مفصلة لكل مجال مهني مع مصادر تعليمية مجانية ومدفوعة"
+      title: t('features.cards.0.title'),
+      description: t('features.cards.0.description')
     },
     {
       icon: "lucide:brain",
-      title: "اختبار تحديد المسار",
-      description: "اختبار تحليل شخصية يساعدك على اكتشاف المجال المهني الأنسب لمهاراتك وميولك"
+      title: t('features.cards.1.title'),
+      description: t('features.cards.1.description')
     },
     {
       icon: "lucide:users",
-      title: "مجتمع تعليمي",
-      description: "تواصل مع متعلمين آخرين في نفس المجال ومشاركة الخبرات والنصائح"
+      title: t('features.cards.2.title'),
+      description: t('features.cards.2.description')
     },
     {
       icon: "lucide:book-open",
-      title: "دورات متخصصة",
-      description: "دورات تدريبية متخصصة يقدمها خبراء في مختلف المجالات المهنية"
+      title: t('features.cards.3.title'),
+      description: t('features.cards.3.description')
     },
     {
       icon: "lucide:message-square",
-      title: "استشارات مهنية",
-      description: "جلسات استشارية مع خبراء لمساعدتك في اتخاذ القرارات المهنية المناسبة"
+      title: t('features.cards.4.title'),
+      description: t('features.cards.4.description')
     },
     {
       icon: "lucide:briefcase",
-      title: "فرص توظيف",
-      description: "تواصل مع شركات توظيف وفرص عمل مناسبة لمهاراتك بعد إتمام المسار التعليمي"
+      title: t('features.cards.5.title'),
+      description: t('features.cards.5.description')
     }
   ];
 
@@ -75,9 +84,9 @@ export const FeatureSection = () => {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 arabic-text">ما نقدمه في <span className="gradient-text">SkillMap</span></h2>
-        <p className="text-foreground-600 max-w-2xl mx-auto arabic-text">
-          منصة متكاملة تساعدك على اكتشاف مسارك المهني وتطوير مهاراتك بطريقة منظمة ومدروسة
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('features.title')} <span className="gradient-text">SkillMap</span></h2>
+        <p className="text-foreground-600 max-w-2xl mx-auto">
+          {t('features.subtitle')}
         </p>
       </motion.div>
     

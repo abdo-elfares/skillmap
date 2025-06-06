@@ -30,12 +30,6 @@ body {
   transform: translateY(-5px);
 }
 
-/* Arabic text styling */
-.arabic-text {
-  font-family: 'Tajawal', sans-serif;
-  letter-spacing: -0.01em;
-}
-
 /* Logo animation */
 .logo-container {
   position: relative;

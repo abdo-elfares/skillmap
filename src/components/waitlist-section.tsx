@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export const WaitlistSection = () => {
+  const { t, ready } = useTranslation();
+  const { isRTL } = useLanguage();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  if (!ready) {
+    return <div>Loading...</div>;
+  }
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,11 +50,11 @@ export const WaitlistSection = () => {
               <Icon icon="lucide:mail-plus" className="text-primary text-2xl" />
             </div>
             
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 arabic-text text-gray-900">
-              انضم إلى قائمة الانتظار
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+              {t('waitlist.title')}
             </h2>
-            <p className="text-gray-600 text-lg arabic-text max-w-lg mx-auto">
-              كن من أول المستخدمين للمنصة واحصل على وصول مبكر ومزايا حصرية
+            <p className="text-gray-600 text-lg max-w-lg mx-auto">
+              {t('waitlist.subtitle')}
             </p>
           </div>
 
@@ -56,12 +64,12 @@ export const WaitlistSection = () => {
                 {/* Simple email input */}
                 <input
                   type="email"
-                  placeholder="أدخل بريدك الإلكتروني"
+                  placeholder={t('waitlist.placeholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-3 text-base rounded-xl border border-gray-200 
                            focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500
-                           placeholder:text-gray-400 placeholder:arabic-text
+                           placeholder:text-gray-400
                            transition-colors duration-200"
                   dir="ltr"
                   required
@@ -80,10 +88,10 @@ export const WaitlistSection = () => {
                   {isLoading ? (
                     <div className="flex items-center justify-center gap-2">
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      <span className="arabic-text">إرسال...</span>
+                      <span>{t('waitlist.sending')}</span>
                     </div>
                   ) : (
-                    <span className="arabic-text">اشتراك</span>
+                    <span>{t('waitlist.buttonText')}</span>
                   )}
                 </button>
               </form>
@@ -92,7 +100,7 @@ export const WaitlistSection = () => {
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Icon icon="lucide:check" className="text-green-600 text-xl" />
                 </div>
-                <p className="text-gray-600 arabic-text">تم الإرسال بنجاح</p>
+                <p className="text-gray-600">{t('waitlist.successMessage')}</p>
               </div>
             )}
           </div>
@@ -100,12 +108,12 @@ export const WaitlistSection = () => {
           <div className="mt-8 flex items-center justify-center gap-6 text-sm text-gray-500">
             <div className="flex items-center gap-2">
               <Icon icon="lucide:shield-check" className="text-primary text-base" />
-              <span className="arabic-text">آمن ومحمي</span>
+              <span>{t('waitlist.secure')}</span>
             </div>
             <div className="w-1 h-1 rounded-full bg-gray-400" />
             <div className="flex items-center gap-2">
               <Icon icon="lucide:mail-check" className="text-primary text-base" />
-              <span className="arabic-text">لا رسائل مزعجة</span>
+              <span>{t('waitlist.noSpam')}</span>
             </div>
           </div>
         </div>

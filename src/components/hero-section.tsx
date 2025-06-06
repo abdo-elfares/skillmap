@@ -1,70 +1,74 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Button } from "@heroui/react";
+import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { smoothScrollTo, smoothScrollToElement } from "../utils/scroll";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "../contexts/LanguageContext";
+import { smoothScrollTo } from "../utils/scroll";
 
 export const HeroSection = () => {
+  const { t, ready } = useTranslation();
+  const { isRTL } = useLanguage();
+  
+  if (!ready) {
+    return <div>Loading...</div>;
+  }
+  
   return (
-    <section className="py-20 md:py-28 flex flex-col items-center text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="max-w-3xl mx-auto"
-      >
-        <motion.h1 
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 arabic-text"
+    <section className="py-20 md:py-28">
+      <div className="flex flex-col items-center text-center">
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text"
         >
-          اكتشف مسارك المهني مع <span className="gradient-text">SkillMap</span>
+          {t('hero.title')}
         </motion.h1>
         
-        <motion.p 
-          className="text-foreground-600 text-lg md:text-xl mb-10 max-w-2xl mx-auto arabic-text"
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          className="text-lg md:text-xl mb-10 max-w-2xl mx-auto"
         >
-          منصة تعليمية متكاملة تساعدك على اكتشاف المجال المناسب لمهاراتك وشخصيتك، وتوفر لك خارطة طريق احترافية للتعلم والتطور
+          {t('hero.subtitle')}
         </motion.p>
-    
-        <motion.div 
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+        
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
+          transition={{ delay: 0.4, duration: 0.7 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Button
             color="primary"
             size="lg"
-            className="font-medium text-base arabic-text hover-lift shadow-lg"
-            startContent={<Icon icon="lucide:user-plus" />}
-            endContent={<Icon icon="lucide:arrow-down" />}
+            className="font-medium text-base"
+            startContent={!isRTL ? <Icon icon="lucide:arrow-right" /> : null}
+            endContent={isRTL ? <Icon icon="lucide:arrow-left" /> : null}
             onPress={() => smoothScrollTo('waitlist')}
           >
-            انضم لقائمة الانتظار
+            {t('hero.joinWaitlist')}
           </Button>
           <Button
             variant="bordered"
             color="primary"
             size="lg"
-            className="font-medium text-base arabic-text hover-lift border-2"
+            className="font-medium text-base border-2"
             startContent={<Icon icon="lucide:compass" />}
             onPress={() => smoothScrollTo('features')}
           >
-            استكشف المزيد
+            {t('hero.exploreMore')}
           </Button>
         </motion.div>
-      </motion.div>
+      </div>
     
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.8 }}
-        className="mt-20 w-full max-w-4xl"
+        className="mt-20 w-full max-w-4xl mx-auto"
       >
         <div className="relative rounded-xl overflow-hidden p-8 bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200">
           <motion.div 
@@ -80,10 +84,10 @@ export const HeroSection = () => {
               <Icon icon="lucide:rocket" className="text-primary text-3xl" />
             </div>
             
-            <h3 className="text-2xl font-bold arabic-text">قريباً</h3>
+            <h3 className="text-2xl font-bold">{t('hero.comingSoon')}</h3>
             
-            <p className="text-foreground-600 max-w-lg arabic-text">
-              نعمل حالياً على تطوير منصة SkillMap لمساعدتك في اكتشاف مسارك المهني وتطوير مهاراتك. ترقب إطلاق المنصة قريباً!
+            <p className="text-foreground-600 max-w-lg">
+              {t('hero.developmentText')}
             </p>
             
             <div className="flex gap-3 mt-2">
