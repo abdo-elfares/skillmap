@@ -13,6 +13,8 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon, title, description, delay }: FeatureCardProps) => {
+  const { isRTL } = useLanguage();
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -22,9 +24,11 @@ const FeatureCard = ({ icon, title, description, delay }: FeatureCardProps) => {
       whileHover={{ y: -5 }}
     >
       <Card className="feature-card h-full border border-primary-100 bg-background/80 backdrop-blur-sm">
-        <CardBody className="gap-4 p-6">
-          <div className="rounded-full bg-primary-100 p-3 w-12 h-12 flex items-center justify-center">
-            <Icon icon={icon} className="text-primary text-xl" />
+        <CardBody className={`gap-4 p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+          <div className={isRTL ? 'mr-auto' : 'ml-0'}>
+            <div className="rounded-full bg-primary-100 p-3 w-12 h-12 flex items-center justify-center">
+              <Icon icon={icon} className="text-primary text-xl" />
+            </div>
           </div>
           <h3 className="text-xl font-semibold">{title}</h3>
           <p className="text-foreground-600">{description}</p>
