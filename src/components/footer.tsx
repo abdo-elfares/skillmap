@@ -2,8 +2,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link, Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export const Footer = () => {
+  const { t, ready } = useTranslation();
+  const { isRTL } = useLanguage();
+  
+  if (!ready) {
+    return null;
+  }
+  
   return (
     <footer className="bg-content2/50 backdrop-blur-sm py-16 border-t border-content3/30" id="contact">
       <div className="container mx-auto px-4">
@@ -25,7 +34,9 @@ export const Footer = () => {
             </div>
           </div>
           
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 arabic-text">تواصل معنا</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">
+            {t('footer.contactUs')}
+          </h2>
           
           <motion.div 
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
@@ -37,33 +48,39 @@ export const Footer = () => {
             <Button
               color="primary"
               size="lg"
-              className="font-medium text-base arabic-text hover-lift shadow-lg"
-              startContent={<Icon icon="lucide:mail" />}
+              className="font-medium text-base hover-lift shadow-lg"
+              startContent={!isRTL ? <Icon icon="lucide:mail" /> : null}
+              endContent={isRTL ? <Icon icon="lucide:mail" /> : null}
               as={Link}
               href="mailto:contact@joinskillmap.tech"
             >
-              تواصل معنا
+              {t('footer.contactUs')}
             </Button>
             <Button
               variant="bordered"
               color="primary"
               size="lg"
-              className="font-medium text-base arabic-text hover-lift border-2"
-              startContent={<Icon icon="lucide:instagram" />}
+              className="font-medium text-base hover-lift border-2"
+              startContent={!isRTL ? <Icon icon="lucide:instagram" /> : null}
+              endContent={isRTL ? <Icon icon="lucide:instagram" /> : null}
               as={Link}
               href="https://instagram.com/joinskillmap"
               target="_blank"
             >
-              تابعنا على انستجرام
+              {t('footer.followUs')}
             </Button>
           </motion.div>
           
           <div className="flex justify-center items-center gap-2 text-foreground-500">
-            <p className="font-medium arabic-text">
+            <p className="font-medium">
               <span className="gradient-text">Skill</span>Map
             </p>
             <span className="mx-2">•</span>
-            <p className="arabic-text">joinskillmap.tech</p>
+            <p>joinskillmap.tech</p>
+          </div>
+          
+          <div className="mt-6 text-sm text-foreground-400">
+            {t('footer.copyright')}
           </div>
         </motion.div>
       </div>
