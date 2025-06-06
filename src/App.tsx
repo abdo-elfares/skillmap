@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Navbar, NavbarBrand, NavbarContent, Button, Link } from "@heroui/react";
 import { Icon } from "@iconify/react";
@@ -6,19 +6,26 @@ import { HeroSection } from "./components/hero-section";
 import { FeatureSection } from "./components/feature-section";
 import { WaitlistSection } from "./components/waitlist-section";
 import { Footer } from "./components/footer";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
+import { detectUserLanguage } from "./utils/languageDetection";
 import "./i18n";
 
 const MainContent = () => {
   const { t, ready } = useTranslation();
-  const { isRTL } = useLanguage();
+  const { isRTL, isLoading } = useLanguage();
 
-  if (!ready) {
-    return <div className="min-h-screen bg-background flex items-center justify-center">
-      <div>Loading translations...</div>
-    </div>;
+  if (!ready || isLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
+          <div className="text-foreground-600">{ready ? 'Setting up language...' : 'Loading...'}</div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -39,22 +46,34 @@ const MainContent = () => {
             </p>
           </motion.div>
         </NavbarBrand>
-        <NavbarContent justify="end">
+         <NavbarContent justify="end" className="gap-2">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
+            <LanguageSwitcher 
+              variant="flat" 
+              className="responsive-lang-btn"
+            />
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
             <Button 
               as={Link} 
-              color="primary" 
+              color="primary"
               href="#contact" 
               variant="flat"
-              className="font-medium"
-              startContent={!isRTL ? <Icon icon="lucide:mail" /> : null}
-              endContent={isRTL ? <Icon icon="lucide:mail" /> : null}
+              className="font-medium responsive-contact-btn"
+              aria-label={t('navbar.contactUs')}
+              startContent={!isRTL ? <Icon icon="lucide:mail" className="responsive-icon" /> : null}
+              endContent={isRTL ? <Icon icon="lucide:mail" className="responsive-icon" /> : null}
             >
-              {t('navbar.contactUs')}
+              <span className="responsive-text">{t('navbar.contactUs')}</span>
             </Button>
           </motion.div>
         </NavbarContent>
@@ -71,30 +90,8 @@ const MainContent = () => {
   );
 };
 
-// Component to handle automatic language detection and redirection
+// Optimized component for automatic language detection and redirection
 const LanguageRedirect = () => {
-  const detectUserLanguage = (): string => {
-    const userLangs = navigator.languages || [navigator.language || (navigator as any).userLanguage];
-    
-    // Check if any user's languages match our supported languages
-    for (const lang of userLangs) {
-      const langCode = lang.substring(0, 2).toLowerCase();
-      if (langCode === 'ar' || langCode === 'en') {
-        return langCode;
-      }
-    }
-    
-    // Check for MENA region languages (fallback to Arabic for regional preference)
-    for (const lang of userLangs) {
-      const fullLang = lang.toLowerCase();
-      if (fullLang.includes('ar') || fullLang.includes('fa') || fullLang.includes('ur')) {
-        return 'ar';
-      }
-    }
-    
-    return 'en'; // Default to English
-  };
-
   const detectedLang = detectUserLanguage();
   return <Navigate to={`/${detectedLang}`} replace />;
 };

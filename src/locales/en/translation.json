@@ -1,6 +1,7 @@
 {
   "navbar": {
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "language": "Language"
   },
   "hero": {
     "title": "Discover Your Path to Success",
@@ -52,7 +53,7 @@
     "noSpam": "No spam"
   },
   "footer": {
-    "copyright": "© 2023 SkillMap. All rights reserved.",
+    "copyright": "© 2025 SkillMap. All rights reserved.",
     "contactUs": "Contact Us",
     "followUs": "Follow Us on Instagram",
     "language": "Language"
