@@ -4,9 +4,20 @@ import { Navbar, NavbarBrand, NavbarContent, Button, Link } from "@heroui/react"
 import { Icon } from "@iconify/react";
 import { HeroSection } from "./components/hero-section";
 import { FeatureSection } from "./components/feature-section";
+import { WaitlistSection } from "./components/waitlist-section";
 import { Footer } from "./components/footer";
+import { useToast } from "./components/toast";
 
 export default function App() {
+  const { showToast, ToastContainer } = useToast();
+
+  const handleWaitlistSubmit = (email: string) => {
+    showToast(
+      `مبروك! تم تسجيلك بنجاح في قائمة الانتظار. سنتواصل معك على ${email} عند إطلاق المنصة`,
+      "success"
+    );
+  };
+
   return (
     <div className="min-h-screen bg-background animated-bg">
       <Navbar maxWidth="xl" className="bg-background/80 backdrop-blur-md border-b border-content3/30">
@@ -50,7 +61,9 @@ export default function App() {
         <FeatureSection />
       </main>
 
+      <WaitlistSection onEmailSubmit={handleWaitlistSubmit} />
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

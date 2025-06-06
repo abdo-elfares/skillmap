@@ -39,20 +39,38 @@ export const HeroSection = () => {
           <Button
             color="primary"
             size="lg"
-            className="font-medium text-base arabic-text hover-lift"
-            startContent={<Icon icon="lucide:compass" />}
-            endContent={<Icon icon="lucide:arrow-right" />}
+            className="font-medium text-base arabic-text hover-lift shadow-lg"
+            startContent={<Icon icon="lucide:user-plus" />}
+            endContent={<Icon icon="lucide:arrow-down" />}
+            onPress={() => {
+              const waitlistSection = document.getElementById('waitlist');
+              if (waitlistSection) {
+                waitlistSection.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'center'
+                });
+              }
+            }}
           >
-            استكشف خرائط المسارات
+            انضم لقائمة الانتظار
           </Button>
           <Button
-            variant="flat"
+            variant="bordered"
             color="primary"
             size="lg"
-            className="font-medium text-base arabic-text hover-lift"
-            startContent={<Icon icon="lucide:lightbulb" />}
+            className="font-medium text-base arabic-text hover-lift border-2"
+            startContent={<Icon icon="lucide:compass" />}
+            onPress={() => {
+              const featuresSection = document.querySelector('h2:has(.gradient-text)')?.parentElement?.parentElement;
+              if (featuresSection) {
+                featuresSection.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }
+            }}
           >
-            اختبار تحديد المسار المهني
+            استكشف المزيد
           </Button>
         </motion.div>
       </motion.div>
