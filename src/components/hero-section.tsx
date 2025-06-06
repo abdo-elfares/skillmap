@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import { smoothScrollTo, smoothScrollToElement } from "../utils/scroll";
 
 export const HeroSection = () => {
   return (
@@ -42,15 +43,7 @@ export const HeroSection = () => {
             className="font-medium text-base arabic-text hover-lift shadow-lg"
             startContent={<Icon icon="lucide:user-plus" />}
             endContent={<Icon icon="lucide:arrow-down" />}
-            onPress={() => {
-              const waitlistSection = document.getElementById('waitlist');
-              if (waitlistSection) {
-                waitlistSection.scrollIntoView({ 
-                  behavior: 'smooth',
-                  block: 'center'
-                });
-              }
-            }}
+            onPress={() => smoothScrollTo('waitlist')}
           >
             انضم لقائمة الانتظار
           </Button>
@@ -60,15 +53,7 @@ export const HeroSection = () => {
             size="lg"
             className="font-medium text-base arabic-text hover-lift border-2"
             startContent={<Icon icon="lucide:compass" />}
-            onPress={() => {
-              const featuresSection = document.querySelector('h2:has(.gradient-text)')?.parentElement?.parentElement;
-              if (featuresSection) {
-                featuresSection.scrollIntoView({ 
-                  behavior: 'smooth',
-                  block: 'start'
-                });
-              }
-            }}
+            onPress={() => smoothScrollTo('features')}
           >
             استكشف المزيد
           </Button>

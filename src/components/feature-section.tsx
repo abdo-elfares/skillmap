@@ -67,7 +67,7 @@ export const FeatureSection = () => {
   ];
 
   return (
-    <section className="py-16">
+    <section className="py-16" id="features">
       <motion.div 
         className="text-center mb-12"
         initial={{ opacity: 0, y: 20 }}

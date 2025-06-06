@@ -25,10 +25,7 @@ export const Footer = () => {
             </div>
           </div>
           
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 arabic-text">كن أول من يعرف عند إطلاق المنصة</h2>
-          <p className="text-foreground-600 mb-8 arabic-text">
-            سجل بريدك الإلكتروني للحصول على إشعار عند إطلاق منصة SkillMap وتمتع بمزايا حصرية للمستخدمين الأوائل
-          </p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 arabic-text">تواصل معنا</h2>
           
           <motion.div 
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
@@ -40,7 +37,7 @@ export const Footer = () => {
             <Button
               color="primary"
               size="lg"
-              className="font-medium arabic-text hover-lift"
+              className="font-medium text-base arabic-text hover-lift shadow-lg"
               startContent={<Icon icon="lucide:mail" />}
               as={Link}
               href="mailto:contact@joinskillmap.tech"
@@ -48,10 +45,10 @@ export const Footer = () => {
               تواصل معنا
             </Button>
             <Button
-              variant="flat"
+              variant="bordered"
               color="primary"
               size="lg"
-              className="font-medium arabic-text hover-lift"
+              className="font-medium text-base arabic-text hover-lift border-2"
               startContent={<Icon icon="lucide:instagram" />}
               as={Link}
               href="https://instagram.com/joinskillmap"

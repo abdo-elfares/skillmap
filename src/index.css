@@ -82,6 +82,12 @@ body {
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adds padding to the top when scrolling to anchors */
+}
+
+/* Enhanced smooth scrolling for all scroll containers */
+* {
+  scroll-behavior: smooth;
 }
 
 /* Waitlist section styling */
