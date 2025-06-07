@@ -1,5 +1,6 @@
 {
-  "name": "skillmap-landing",
+  "name": "skillmap",
+  "homepage": "https://joinskillmap.tech/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,12 +8,15 @@
     "dev": "vite",
     "build": "tsc --noCheck && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@heroui/react": "2.7.9",
     "@iconify/react": "latest",
     "framer-motion": "^11.18.2",
+    "gh-pages": "^6.3.0",
     "i18next": "^25.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
