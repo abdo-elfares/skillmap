@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
-import { useTranslation } from "react-i18next";
-import { useLanguage } from "../contexts/LanguageContext";
+import { useAppState } from "../hooks/useAppState";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 export const WaitlistSection = () => {
-  const { t, ready } = useTranslation();
-  const { isRTL } = useLanguage();
+  const { t, isReady } = useAppState();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  if (!ready) {
-    return <div>Loading...</div>;
+  if (!isReady) {
+    return <LoadingSpinner />;
   }
 
   const validateEmail = (email: string) => {

@@ -7,23 +7,20 @@ import { FeatureSection } from "./components/feature-section";
 import { WaitlistSection } from "./components/waitlist-section";
 import { Footer } from "./components/footer";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { LoadingSpinner } from "./components/LoadingSpinner";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
+import { useAppState } from "./hooks/useAppState";
 import { detectUserLanguage } from "./utils/languageDetection";
 import "./i18n";
 
 const MainContent = () => {
-  const { t, ready } = useTranslation();
-  const { isRTL, isLoading } = useLanguage();
+  const { t, isRTL, isReady, isLoading } = useAppState();
 
-  if (!ready || isLoading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
-          <div className="text-foreground-600">{ready ? 'Setting up language...' : 'Loading...'}</div>
-        </div>
+        <LoadingSpinner message="Setting up language..." />
       </div>
     );
   }
@@ -46,16 +43,13 @@ const MainContent = () => {
             </p>
           </motion.div>
         </NavbarBrand>
-         <NavbarContent justify="end" className="gap-2">
+        <NavbarContent justify="end" className="gap-2">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <LanguageSwitcher 
-              variant="flat" 
-              className="responsive-lang-btn"
-            />
+            <LanguageSwitcher variant="flat" className="responsive-lang-btn" />
           </motion.div>
           
           <motion.div
@@ -91,10 +85,7 @@ const MainContent = () => {
 };
 
 // Optimized component for automatic language detection and redirection
-const LanguageRedirect = () => {
-  const detectedLang = detectUserLanguage();
-  return <Navigate to={`/${detectedLang}`} replace />;
-};
+const LanguageRedirect = () => <Navigate to={`/${detectUserLanguage()}`} replace />;
 
 export default function App() {
   return (

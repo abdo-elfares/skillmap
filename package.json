@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@heroui/react": "2.7.9",
-    "@heroui/use-theme": "2.1.6",
     "@iconify/react": "latest",
     "framer-motion": "^11.18.2",
     "i18next": "^25.2.1",
@@ -23,12 +22,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",
-    "@babel/generator": "^7.27.0",
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.27.0",
-    "@babel/traverse": "^7.27.0",
     "@babel/types": "^7.27.0",
-    "@types/i18next": "^13.0.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",

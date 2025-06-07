@@ -2,14 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link, Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { useTranslation } from "react-i18next";
-import { useLanguage } from "../contexts/LanguageContext";
+import { useAppState } from "../hooks/useAppState";
 
 export const Footer = () => {
-  const { t, ready } = useTranslation();
-  const { isRTL } = useLanguage();
+  const { t, isRTL, isReady } = useAppState();
   
-  if (!ready) {
+  if (!isReady) {
     return null;
   }
   

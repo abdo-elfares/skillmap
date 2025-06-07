@@ -23,26 +23,20 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     if (isLoading) return;
     
     const newLang = getOppositeLanguage(language as 'en' | 'ar');
-    const currentPath = location.pathname;
+    const pathSegments = location.pathname.split('/').filter(Boolean);
     
-    // Replace the language segment in the URL
-    const pathSegments = currentPath.split('/').filter(Boolean);
     if (pathSegments.length > 0) {
       pathSegments[0] = newLang;
-      const newPath = `/${pathSegments.join('/')}`;
-      navigate(newPath);
+      navigate(`/${pathSegments.join('/')}`);
     } else {
       navigate(`/${newLang}`);
     }
   };
 
   const isArabic = language === 'ar';
-  const targetLanguage = isArabic ? 'en' : 'ar';
-  
-  // Flag icons mapping with better icons
   const flagIcon = isArabic ? "emojione:flag-for-united-kingdom" : "emojione:flag-for-egypt";
   const ariaLabel = isArabic ? "Switch to English" : "التبديل إلى العربية";
-  const buttonText = targetLanguage === 'ar' ? 'عربي' : 'EN';
+  const buttonText = isArabic ? 'EN' : 'عربي';
 
   return (
     <motion.div

@@ -2,16 +2,15 @@ import React from "react";
 import { Button } from "@heroui/react";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { useTranslation } from "react-i18next";
-import { useLanguage } from "../contexts/LanguageContext";
+import { useAppState } from "../hooks/useAppState";
+import { LoadingSpinner } from "./LoadingSpinner";
 import { smoothScrollTo } from "../utils/scroll";
 
 export const HeroSection = () => {
-  const { t, ready } = useTranslation();
-  const { isRTL } = useLanguage();
+  const { t, isRTL, isReady } = useAppState();
   
-  if (!ready) {
-    return <div>Loading...</div>;
+  if (!isReady) {
+    return <LoadingSpinner />;
   }
   
   return (

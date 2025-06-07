@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardBody } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { useTranslation } from "react-i18next";
-import { useLanguage } from "../contexts/LanguageContext";
+import { useAppState } from "../hooks/useAppState";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 interface FeatureCardProps {
   icon: string;
@@ -13,7 +13,7 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon, title, description, delay }: FeatureCardProps) => {
-  const { isRTL } = useLanguage();
+  const { isRTL } = useAppState();
   
   return (
     <motion.div
@@ -39,11 +39,10 @@ const FeatureCard = ({ icon, title, description, delay }: FeatureCardProps) => {
 };
 
 export const FeatureSection = () => {
-  const { t, ready } = useTranslation();
-  const { isRTL } = useLanguage();
+  const { t, isReady } = useAppState();
 
-  if (!ready) {
-    return <div>Loading...</div>;
+  if (!isReady) {
+    return <LoadingSpinner />;
   }
 
   const features = [

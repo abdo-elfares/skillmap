@@ -5,9 +5,6 @@ import { initReactI18next } from 'react-i18next';
 import enTranslation from './locales/en/translation.json';
 import arTranslation from './locales/ar/translation.json';
 
-// Import optimized language utilities
-import { SUPPORTED_LANGUAGES, setDocumentLanguage } from './utils/languageDetection';
-
 // Initialize i18next with optimized configuration
 i18n
   .use(initReactI18next)
@@ -26,9 +23,5 @@ i18n
       useSuspense: false // Prevent loading issues
     }
   });
-
-// Re-export for backward compatibility
-export const languages = SUPPORTED_LANGUAGES;
-export const setLanguageDirection = setDocumentLanguage;
 
 export default i18n;

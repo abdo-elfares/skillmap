@@ -14,23 +14,21 @@ body {
   overflow-x: hidden;
 }
 
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Gradient text utility */
 .gradient-text {
   background: linear-gradient(to right, #4F46E5, #8B5CF6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 
-.feature-card {
-  transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Logo animation */
+/* Logo animations */
 .logo-container {
   position: relative;
   display: inline-flex;
@@ -57,36 +55,24 @@ body {
   transform: translateX(3px);
 }
 
-/* Enhanced animations */
+/* Card animations */
+.feature-card {
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Enhanced button hover effects */
 .hover-lift {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hover-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.2);
-}
-
-/* Button hover effects */
+.hover-lift:hover,
 .hover-lift[data-hover="true"] {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.2);
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Adds padding to the top when scrolling to anchors */
-}
-
-/* Enhanced smooth scrolling for all scroll containers */
-* {
-  scroll-behavior: smooth;
-}
-
-/* Waitlist section styling */
-.waitlist-gradient {
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
 }
 
 /* Animated background */
@@ -97,21 +83,13 @@ html {
 }
 
 @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-/* Responsive Navbar Styles */
-/* Language Switcher Responsive Design */
-.responsive-lang-switcher {
-  /* Mobile: smaller size with minimal padding */
+/* Responsive Design */
+.responsive-lang-switcher,
+.responsive-contact-btn {
   font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
   height: 2rem;
@@ -120,51 +98,13 @@ html {
 
 @media (min-width: 640px) {
   .responsive-lang-switcher {
-    /* Desktop: normal size with proper padding */
     font-size: 1rem;
     padding: 0.5rem 0.75rem;
     height: 2.5rem;
     min-width: 4rem;
   }
-}
-
-.responsive-flag-icon {
-  /* Mobile: smaller icon */
-  font-size: 1rem;
-}
-
-@media (min-width: 640px) {
-  .responsive-flag-icon {
-    /* Desktop: larger icon */
-    font-size: 1.125rem;
-  }
-}
-
-.responsive-lang-text {
-  /* Mobile: hide text, show only icon */
-  display: none;
-}
-
-@media (min-width: 640px) {
-  .responsive-lang-text {
-    /* Desktop: show text with icon */
-    display: inline;
-    font-size: 0.875rem;
-  }
-}
-
-/* Contact Button Responsive Design */
-.responsive-contact-btn {
-  /* Mobile: smaller size with minimal padding */
-  font-size: 0.875rem;
-  padding: 0.25rem 0.5rem;
-  height: 2rem;
-  min-width: 2rem;
-}
-
-@media (min-width: 640px) {
+  
   .responsive-contact-btn {
-    /* Desktop: normal size with proper padding */
     font-size: 1rem;
     padding: 0.5rem 1rem;
     height: 2.5rem;
@@ -172,31 +112,35 @@ html {
   }
 }
 
+.responsive-flag-icon,
 .responsive-icon {
-  /* Mobile: base icon size */
   font-size: 1rem;
 }
 
 @media (min-width: 640px) {
+  .responsive-flag-icon,
   .responsive-icon {
-    /* Desktop: slightly larger icon */
     font-size: 1.125rem;
   }
 }
 
+.responsive-lang-text,
 .responsive-text {
-  /* Mobile: hide text, show only icon */
   display: none;
 }
 
 @media (min-width: 640px) {
+  .responsive-lang-text {
+    display: inline;
+    font-size: 0.875rem;
+  }
+  
   .responsive-text {
-    /* Desktop: show text with icon */
     display: inline;
   }
 }
 
-/* Ensure buttons don't overlap on very small screens */
+/* Ensure buttons don't overlap on small screens */
 @media (max-width: 639px) {
   .responsive-lang-switcher,
   .responsive-contact-btn {
