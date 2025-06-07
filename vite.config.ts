@@ -10,4 +10,9 @@ export default defineConfig({
     allowedHosts: true,
   },
   base: "/",
+  publicDir: 'public',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+  },
 });
