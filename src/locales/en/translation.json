@@ -17,8 +17,8 @@
     "subtitle": "A comprehensive platform that helps you discover your career path and develop your skills in an organized and thoughtful way",
     "cards": [
       {
-        "title": "Learning Path Maps",
-        "description": "Detailed roadmaps for every professional field with free and paid educational resources"
+        "title": "AI Mentor & Learning Assistant",
+        "description": "Personalized AI mentor powered by advanced RAG technology that provides accurate, domain-specific answers and guidance tailored to your learning journey"
       },
       {
         "title": "Career Assessment Test",
