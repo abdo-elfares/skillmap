@@ -47,7 +47,7 @@ export const FeatureSection = () => {
 
   const features = [
     {
-      icon: "lucide:compass",
+      icon: "lucide:bot",
       title: t('features.cards.0.title'),
       description: t('features.cards.0.description')
     },
