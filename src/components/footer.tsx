@@ -59,10 +59,10 @@ export const Footer = () => {
               color="primary"
               size="lg"
               className="font-medium text-base hover-lift border-2"
-              startContent={!isRTL ? <Icon icon="lucide:instagram" /> : null}
-              endContent={isRTL ? <Icon icon="lucide:instagram" /> : null}
+              startContent={!isRTL ? <Icon icon="lucide:linkedin" /> : null}
+              endContent={isRTL ? <Icon icon="lucide:linkedin" /> : null}
               as={Link}
-              href="https://instagram.com/joinskillmap"
+              href="https://www.linkedin.com/company/skillmapedu"
               target="_blank"
             >
               {t('footer.followUs')}
