@@ -43,7 +43,7 @@ export const Footer = () => {
               startContent={!isRTL ? <Icon icon="lucide:mail" /> : null}
               endContent={isRTL ? <Icon icon="lucide:mail" /> : null}
               as={Link}
-              href="mailto:contact@joinskillmap.tech"
+              href="mailto:contact@joinskillmap.me"
             >
               {t('footer.contactUs')}
             </Button>
@@ -67,7 +67,7 @@ export const Footer = () => {
               <span className="gradient-text">Skill</span>Map
             </p>
             <span className="mx-2">•</span>
-            <p>joinskillmap.tech</p>
+            <p>joinskillmap.me</p>
           </div>
           
           <div className="mt-6 text-sm text-foreground-400">
