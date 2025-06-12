@@ -4,6 +4,7 @@ import { Navbar, NavbarBrand, NavbarContent, Button, Link } from "@heroui/react"
 import { Icon } from "@iconify/react";
 import { HeroSection } from "./components/hero-section";
 import { FeatureSection } from "./components/feature-section";
+import { PartnersSection } from "./components/partners-section";
 import { WaitlistSection } from "./components/waitlist-section";
 import { Footer } from "./components/footer";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
@@ -71,6 +72,7 @@ const MainContent = () => {
       <main className="container mx-auto px-4 py-8">
         <HeroSection />
         <FeatureSection />
+        <PartnersSection />
       </main>
 
       <WaitlistSection />
