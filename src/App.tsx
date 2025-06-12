@@ -29,18 +29,13 @@ const MainContent = () => {
     <div className={`min-h-screen bg-background animated-bg ${isRTL ? 'rtl' : 'ltr'}`}>
       <Navbar maxWidth="xl" className="bg-background/80 backdrop-blur-md border-b border-content3/30">
         <NavbarBrand>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="logo-container flex items-center gap-2"
           >
-            <div className="logo-icon bg-primary/10 rounded-lg p-2 flex items-center justify-center">
-              <Icon icon="lucide:map" className="text-primary text-2xl" />
-            </div>
-            <p className="logo-text font-bold text-xl">
-              <span className="gradient-text">Skill</span>Map
-            </p>
+            <img src="/svg-removebg-preview.svg" alt="SkillMap Logo" className="h-12" />
           </motion.div>
         </NavbarBrand>
         <NavbarContent justify="end" className="gap-2">

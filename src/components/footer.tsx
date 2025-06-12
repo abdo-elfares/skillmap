@@ -22,14 +22,7 @@ export const Footer = () => {
           viewport={{ once: true }}
         >
           <div className="mb-8 flex justify-center">
-            <div className="logo-container flex items-center gap-2">
-              <div className="logo-icon bg-primary/10 rounded-lg p-3 flex items-center justify-center">
-                <Icon icon="lucide:map" className="text-primary text-3xl" />
-              </div>
-              <p className="logo-text font-bold text-2xl">
-                <span className="gradient-text">Skill</span>Map
-              </p>
-            </div>
+            <img src="/svg-removebg-preview.svg" alt="SkillMap Logo" className="h-12" />
           </div>
           
           <h2 className="text-2xl md:text-3xl font-bold mb-8">
